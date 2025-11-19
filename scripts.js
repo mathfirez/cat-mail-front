@@ -1,7 +1,7 @@
 function send() {
     const author = document.getElementById("username").value.trim();
     const content = document.getElementById("content").value.trim();
-	const receiver = "mathfirez";
+    const receiver = "mathfirez";
 
     if (author === "" || content === "") {
         alert("All fields must be filled before sending.");
@@ -10,7 +10,7 @@ function send() {
 
     const message = {
         Author: author,
-		Receiver: receiver,
+        Receiver: receiver,
         Content: content
     };
 
@@ -22,13 +22,12 @@ function send() {
         body: JSON.stringify(message)
     })
     .then(response => {
-        if (response.status === 201) {
-            return response.json();
-        } else {
+        if (!response.ok) {
             throw new Error("HTTP " + response.status);
         }
+        return response.text();
     })
-    .then(data => {
+    .then(() => {
         alert("Sent!");
     })
     .catch(err => {
