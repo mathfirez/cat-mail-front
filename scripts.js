@@ -14,7 +14,7 @@ function send() {
         Content: content
     };
 
-    fetch("http://srv1137806.hstgr.cloud:8000/message", {
+    fetch("https://srv1137806.hstgr.cloud:8000/message", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
